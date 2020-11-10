@@ -46,6 +46,11 @@ const Home = ({ signin }) => {
         className="h-full flex flex-col justify-center"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <img
+          src="/images/trip.gif"
+          alt="description of gif"
+          className="flex self-center w-64 h-64 mb-8 rounded-xl overflow-hidden shadow-2xl"
+        />
         <h1 className="mb-4 text-xl md:text-2xl">
           Welcome to your web check-in
         </h1>
