@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { signin } from "../store/index.js";
+import { signin } from "../store/index";
 import Spinner from "../components/atoms/spinner";
 import Input from "../components/atoms/input";
 
@@ -24,7 +24,7 @@ const Home = ({ signin }) => {
   const [lastName, setLastName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async () => {
     try {
       setLoading(true);
       const response = await axios.post("/api/passenger", {

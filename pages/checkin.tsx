@@ -30,7 +30,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [isReviewed, setIsReviewed] = useState(false);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async () => {
     if (isReviewed) {
       try {
         setLoading(true);
@@ -64,24 +64,17 @@ export default function Home() {
   };
 
   useEffect(() => {
-    let ignore = false;
     const fetchUser = async () => {
       try {
         setLoading(true);
         const response = await axios("/api/passenger");
         setLastName(response.data.passenger.lastName);
-        if (!ignore) {
-          //////////////////////////////////
-        }
       } catch (err) {
         console.error(err);
       }
       setLoading(false);
     };
     fetchUser();
-    return () => {
-      ignore = true;
-    };
   }, []);
 
   const headline = isReviewed
@@ -95,22 +88,23 @@ export default function Home() {
         <div className="flex flex-col md:flex-row md:space-x-2">
           <div className="flex-1">
             <Input
+              name="firstName"
               className="mb-2"
               type="text"
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
-              placeholder="Jon"
+              placeholder="First name"
             />
             <Input
+              name="lastName"
               className="mb-2"
               type="text"
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
-              placeholder="Doe"
+              placeholder="Last name"
             />
             <div className="relative mb-2">
               <select
-                type="select"
                 onChange={(event) => setNationality(event.target.value)}
                 value={nationality}
                 className=" block appearance-none w-full bg-white hover:border-gray-500 px-3 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
@@ -133,6 +127,7 @@ export default function Home() {
             </div>
 
             <Input
+              name="Email"
               className="mb-2"
               type="text"
               value={email}
@@ -140,6 +135,7 @@ export default function Home() {
               placeholder="Email"
             />
             <Input
+              name="phoneNumber"
               className="mb-2"
               type="text"
               value={phoneNumber}
@@ -151,6 +147,7 @@ export default function Home() {
                 <label className="text-sm text-gray-600">
                   Birth date
                   <Input
+                    name="birthDate"
                     className="mb-2"
                     type="date"
                     value={birthDate}
@@ -162,6 +159,7 @@ export default function Home() {
             )}
             {nationality === "france" && (
               <Input
+                name="birthPlace"
                 className="mb-2"
                 type="text"
                 value={birthPlace}
@@ -175,6 +173,7 @@ export default function Home() {
               nationality == "belgium" ||
               nationality == "france") && (
               <Input
+                name="country"
                 className="mb-2"
                 type="text"
                 value={country}
@@ -188,6 +187,7 @@ export default function Home() {
               nationality == "france") && (
               <>
                 <Input
+                  name="city"
                   className="mb-2"
                   type="text"
                   value={city}
@@ -199,6 +199,7 @@ export default function Home() {
             {(nationality === "spain" || nationality == "belgium") && (
               <>
                 <Input
+                  name="address"
                   className="mb-2"
                   type="text"
                   value={address}
@@ -212,6 +213,7 @@ export default function Home() {
                 <label className="text-sm text-gray-600">
                   Passport Issue Date
                   <Input
+                    name="passportIssueDate"
                     type="date"
                     value={passportIssueDate}
                     onChange={(event) =>
@@ -221,6 +223,7 @@ export default function Home() {
                   />
                 </label>
                 <Input
+                  name="passportIssueCountry"
                   className="mt-2 mb-2"
                   type="text"
                   value={passportIssueCountry}
@@ -235,6 +238,7 @@ export default function Home() {
               (nationality == "greece" && (
                 <>
                   <Input
+                    name="passportIssueCity"
                     className="mb-2"
                     type="text"
                     value={passportIssueCity}
@@ -246,6 +250,7 @@ export default function Home() {
                 </>
               ))}
             <Input
+              name="passportNumber"
               className="mb-2"
               type="text"
               value={passportNumber}
@@ -257,6 +262,7 @@ export default function Home() {
                 <label className="text-sm text-gray-600">
                   Passport Expiry Date
                   <Input
+                    name="passportExpiryDate"
                     className="mb-2"
                     type="date"
                     value={passportExpiryDate}

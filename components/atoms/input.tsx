@@ -7,7 +7,7 @@ export default ({
   value,
   onChange,
   className = null,
-  register,
+  register = null, // used for registering validation rules
 }) => {
   return (
     <>
