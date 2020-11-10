@@ -1,5 +1,7 @@
 # Cosi Challenge
 
+[Live Demo](https://github.com/Patiopatio/cosi-challenge)
+
 This coding challenge is a small Next.js single page application enabling the user who is on the way to the airport to do their check-in using a mobile phone.
 
 ## Run locally
